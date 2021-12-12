@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/heroesFragment">
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="ru.dariamikhailukova.cardsgame.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_heroesFragment"
+            app:destination="@id/heroesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heroesFragment"
+        android:name="ru.dariamikhailukova.cardsgame.HeroesFragment"
+        android:label="fragment_heroes"
+        tools:layout="@layout/fragment_heroes" >
+        <action
+            android:id="@+id/action_heroesFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/creaturesFragment"
+        android:name="ru.dariamikhailukova.cardsgame.CreaturesFragment"
+        android:label="fragment_creatures"
+        tools:layout="@layout/fragment_creatures" >
+        <action
+            android:id="@+id/action_creaturesFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+</navigation>
