@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_heroesFragment"
             app:destination="@id/heroesFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_startFragment"
+            app:destination="@id/startFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/startFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/heroesFragment"

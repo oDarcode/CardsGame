@@ -7,14 +7,22 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import ru.dariamikhailukova.cardsgame.databinding.ActivityMainBinding
 import ru.dariamikhailukova.cardsgame.repository.HeroesRepository
 import java.util.*
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 
 
+
+
+//1F:B3:F5:46:04:A7:04:19:18:37:22:C3:AE:8F:04:FA:43:B2:EB:12
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: MainViewModel
+    lateinit var mGoogleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +46,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         })*/
-
         setSupportActionBar(findViewById(R.id.myToolbar))
 
         val bottomNavigationView = binding.bottomNav
@@ -51,7 +58,11 @@ class MainActivity : AppCompatActivity() {
                 bottomNavigationView.visibility = View.VISIBLE
             }
         }
-    }
 
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    }
 
 }

@@ -5,9 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
 
 import ru.dariamikhailukova.cardsgame.databinding.FragmentSettingsBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnCompleteListener
+
+
+
+
+
+
 
 
 class SettingsFragment : Fragment() {
@@ -24,7 +37,34 @@ class SettingsFragment : Fragment() {
         val view = binding.root
 
         //bottomNavigationView.setOnApplyWindowInsetsListener(null)
+
+        val acct = GoogleSignIn.getLastSignedInAccount(activity as MainActivity)
+        if (acct != null) {
+            val personName = acct.displayName
+            val personGivenName = acct.givenName
+            val personFamilyName = acct.familyName
+            val personEmail = acct.email
+            val personId = acct.id
+
+            binding.name.text = personName.toString()
+            binding.email.text = personEmail.toString()
+        }
+
+        binding.exit.setOnClickListener {
+            if (GoogleSignIn.getLastSignedInAccount(activity as MainActivity) != null) {
+                signOut()
+            } else {
+                Toast.makeText(activity as MainActivity, "You are not log in", Toast.LENGTH_SHORT).show()
+            }
+        }
         return view
+    }
+
+    private fun signOut() {
+        (activity as MainActivity).mGoogleSignInClient.signOut().addOnCompleteListener {
+            Toast.makeText(activity as MainActivity, "We are log out", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(binding.root).navigate(R.id.action_settingsFragment_to_startFragment)
+        }
     }
 
 }

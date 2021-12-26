@@ -67,6 +67,8 @@ dependencies {
     //Recycler View
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
+    implementation 'com.google.android.gms:play-services-auth:20.0.0'
+
     implementation 'com.vk:androidsdk:1.6.7'
     implementation 'com.facebook.stetho:stetho:1.4.1'
     implementation 'com.facebook.stetho:stetho-urlconnection:1.4.1'
