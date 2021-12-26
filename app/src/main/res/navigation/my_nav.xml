@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/heroesFragment">
+    app:startDestination="@id/startFragment">
 
     <fragment
         android:id="@+id/settingsFragment"
@@ -31,5 +31,14 @@
         <action
             android:id="@+id/action_creaturesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="ru.dariamikhailukova.cardsgame.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_heroesFragment"
+            app:destination="@id/heroesFragment" />
     </fragment>
 </navigation>
