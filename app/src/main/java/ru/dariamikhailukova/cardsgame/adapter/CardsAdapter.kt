@@ -46,6 +46,9 @@ class CardsAdapter: RecyclerView.Adapter<CardsAdapter.CardsViewHolder>() {
             holder.averagePosition?.text = ZERO
         }
 
+        holder.eachCard?.setOnClickListener {
+
+        }
     }
 
     fun setData(newList: List<Card>) {

@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import ru.dariamikhailukova.cardsgame.R
 import ru.dariamikhailukova.cardsgame.model.Hero
@@ -51,6 +53,10 @@ class HeroAdapter: RecyclerView.Adapter<HeroAdapter.HeroViewHolder>() {
             holder.selectionFrequency?.text = selectionFrequency.toString()
         } else {
             holder.selectionFrequency?.text = ZERO
+        }
+
+        holder.eachHero?.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.action_heroesFragment_to_showHeroFragment)
         }
     }
 

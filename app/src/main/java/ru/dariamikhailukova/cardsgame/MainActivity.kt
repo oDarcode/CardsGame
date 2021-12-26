@@ -65,7 +65,8 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.fragment)
         bottomNavigationView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.settingsFragment || destination.id == R.id.startFragment) {
+            if (destination.id == R.id.settingsFragment || destination.id == R.id.startFragment
+                || destination.id == R.id.showHeroFragment) {
                 bottomNavigationView.visibility = View.GONE
             } else {
                 bottomNavigationView.visibility = View.VISIBLE
