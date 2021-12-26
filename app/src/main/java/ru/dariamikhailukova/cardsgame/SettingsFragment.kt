@@ -13,6 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import androidx.annotation.NonNull
+import com.facebook.login.LoginManager
 
 import com.google.android.gms.tasks.OnCompleteListener
 
@@ -39,6 +40,7 @@ class SettingsFragment : Fragment() {
         //bottomNavigationView.setOnApplyWindowInsetsListener(null)
 
         val acct = GoogleSignIn.getLastSignedInAccount(activity as MainActivity)
+        val currentUser = (activity as MainActivity).mAuth.currentUser
         if (acct != null) {
             val personName = acct.displayName
             val personGivenName = acct.givenName
@@ -48,12 +50,19 @@ class SettingsFragment : Fragment() {
 
             binding.name.text = personName.toString()
             binding.email.text = personEmail.toString()
+        } else if (currentUser != null) {
+            val personName = currentUser.displayName
+            val personEmail = currentUser.email
+
+            binding.name.text = personName.toString()
+            binding.email.text = personEmail.toString()
         }
 
+
         binding.exit.setOnClickListener {
-            if (GoogleSignIn.getLastSignedInAccount(activity as MainActivity) != null) {
+            if (GoogleSignIn.getLastSignedInAccount(activity as MainActivity) != null || (activity as MainActivity).mAuth.currentUser != null) {
                 signOut()
-            } else {
+            }             else {
                 Toast.makeText(activity as MainActivity, "You are not log in", Toast.LENGTH_SHORT).show()
             }
         }
@@ -61,10 +70,15 @@ class SettingsFragment : Fragment() {
     }
 
     private fun signOut() {
-        (activity as MainActivity).mGoogleSignInClient.signOut().addOnCompleteListener {
-            Toast.makeText(activity as MainActivity, "We are log out", Toast.LENGTH_SHORT).show()
-            Navigation.findNavController(binding.root).navigate(R.id.action_settingsFragment_to_startFragment)
+        if (GoogleSignIn.getLastSignedInAccount(activity as MainActivity) != null) {
+            (activity as MainActivity).mGoogleSignInClient.signOut()
         }
+        if ((activity as MainActivity).mAuth.currentUser != null) {
+            (activity as MainActivity).mAuth.signOut()
+            LoginManager.getInstance().logOut()
+        }
+        Toast.makeText(activity as MainActivity, "We are log out", Toast.LENGTH_SHORT).show()
+        Navigation.findNavController(binding.root).navigate(R.id.action_settingsFragment_to_startFragment)
     }
 
 }
