@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_creaturesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_creaturesFragment_to_showCardFragment"
+            app:destination="@id/showCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/startFragment"
@@ -58,5 +61,14 @@
         <action
             android:id="@+id/action_showHeroFragment_to_heroesFragment"
             app:destination="@id/heroesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showCardFragment"
+        android:name="ru.dariamikhailukova.cardsgame.ShowCardFragment"
+        android:label="fragment_show_card"
+        tools:layout="@layout/fragment_show_card" >
+        <action
+            android:id="@+id/action_showCardFragment_to_creaturesFragment"
+            app:destination="@id/creaturesFragment" />
     </fragment>
 </navigation>

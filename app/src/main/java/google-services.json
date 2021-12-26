@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "323664073838",
+    "project_id": "cardsgame-76987",
+    "storage_bucket": "cardsgame-76987.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323664073838:android:a4c1f3b302512cef10827f",
+        "android_client_info": {
+          "package_name": "ru.dariamikhailukova.cardsgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323664073838-0n57gjg91p6o7kfr2qujv3ts9d2fstme.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCkYJcY68UPlOKPqwSF4i3aHZP4rFWVns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323664073838-0n57gjg91p6o7kfr2qujv3ts9d2fstme.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
