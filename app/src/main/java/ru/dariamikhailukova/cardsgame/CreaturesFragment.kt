@@ -2,13 +2,19 @@ package ru.dariamikhailukova.cardsgame
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import ru.dariamikhailukova.cardsgame.adapter.CardsAdapter
 import ru.dariamikhailukova.cardsgame.databinding.FragmentCreaturesBinding
 
 class CreaturesFragment : Fragment() {
     private var _binding: FragmentCreaturesBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var mainActivity: MainActivity
+    private val cardsAdapter by lazy { CardsAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -16,6 +22,19 @@ class CreaturesFragment : Fragment() {
     ): View {
         _binding = FragmentCreaturesBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
+
+        mainActivity = activity as MainActivity
+        setupRecyclerView()
+
+        mainActivity.viewModel.getCards()
+        mainActivity.viewModel.cardsResponse.observe(mainActivity, androidx.lifecycle.Observer { response ->
+            if (response.isSuccessful) {
+                response.body()?.let { cardsAdapter.setData(it) }
+            } else {
+                Toast.makeText(mainActivity, response.code(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
         return binding.root
     }
@@ -29,6 +48,11 @@ class CreaturesFragment : Fragment() {
             Navigation.findNavController(binding.root).navigate(R.id.action_creaturesFragment_to_settingsFragment)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupRecyclerView() {
+        binding.recyclerViewCreatures.adapter = cardsAdapter
+        binding.recyclerViewCreatures.layoutManager = LinearLayoutManager(mainActivity)
     }
 
 }
