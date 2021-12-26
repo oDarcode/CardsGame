@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import ru.dariamikhailukova.cardsgame.databinding.FragmentSettingsBinding
 import ru.dariamikhailukova.cardsgame.databinding.FragmentStartBinding
 
 
@@ -25,6 +24,7 @@ class StartFragment : Fragment() {
         val view = binding.root
 
         binding.openButton.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_startFragment_to_heroesFragment) }
+        binding.authorizationButton.setOnClickListener {  }
         return view
     }
 }

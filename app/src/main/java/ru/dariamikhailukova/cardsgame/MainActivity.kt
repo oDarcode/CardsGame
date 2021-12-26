@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import ru.dariamikhailukova.cardsgame.databinding.ActivityMainBinding
 import ru.dariamikhailukova.cardsgame.repository.HeroesRepository
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val repository = HeroesRepository()
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        viewModel.getHero()
+        /*viewModel.getHero()
         viewModel.heroResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
                 Log.d("name ", response.body()?.name.toString())
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("error ", response.errorBody().toString())
             }
 
-        })
+        })*/
 
         setSupportActionBar(findViewById(R.id.myToolbar))
 

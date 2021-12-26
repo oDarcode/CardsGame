@@ -7,7 +7,7 @@ import ru.dariamikhailukova.cardsgame.model.ShortHero
 
 interface HeroesApi {
 
-    @GET("heroes/1")
+    @GET("heroes/5")
     suspend fun getHero(): Response<Hero>
 
     @GET("heroes")

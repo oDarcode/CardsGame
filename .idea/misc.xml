@@ -5,12 +5,15 @@
       <map>
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/activity_start.xml" value="0.1578125" />
+        <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/activity_vk_demo.xml" value="0.16261398176291794" />
+        <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/activity_vkontakte.xml" value="0.18110435663627153" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/fragment_creatures.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/fragment_heroes.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/fragment_list.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/fragment_main.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/fragment_settings.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/fragment_start.xml" value="0.2234375" />
+        <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/layout/row_layout.xml" value="0.5" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/menu/characters_menu.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/darmi/AndroidStudioProjects/CardsGame/app/src/main/res/menu/list_menu.xml" value="0.428125" />
       </map>
