@@ -5,6 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import ru.dariamikhailukova.cardsgame.databinding.FragmentHeroesBinding
+import java.util.Observer
 
 
 class HeroesFragment : Fragment() {
@@ -19,6 +20,7 @@ class HeroesFragment : Fragment() {
     ): View {
         _binding = FragmentHeroesBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
+
 
 
         return binding.root
