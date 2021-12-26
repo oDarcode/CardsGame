@@ -10,8 +10,6 @@ import java.util.Observer
 
 class HeroesFragment : Fragment() {
     private var _binding: FragmentHeroesBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,8 +18,6 @@ class HeroesFragment : Fragment() {
     ): View {
         _binding = FragmentHeroesBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-
-
 
         return binding.root
 

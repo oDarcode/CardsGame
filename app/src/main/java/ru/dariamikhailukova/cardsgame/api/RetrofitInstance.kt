@@ -5,10 +5,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.dariamikhailukova.cardsgame.util.Constants.Companion.BASE_URL
 import com.google.gson.GsonBuilder
 
-import com.google.gson.Gson
-
-
-
 
 object RetrofitInstance {
 

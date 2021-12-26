@@ -6,12 +6,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import ru.dariamikhailukova.cardsgame.databinding.FragmentCreaturesBinding
 
-
-
 class CreaturesFragment : Fragment() {
     private var _binding: FragmentCreaturesBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,9 +17,7 @@ class CreaturesFragment : Fragment() {
         _binding = FragmentCreaturesBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
 
-
         return binding.root
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
