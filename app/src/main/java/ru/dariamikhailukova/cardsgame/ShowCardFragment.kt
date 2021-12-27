@@ -22,9 +22,17 @@ class ShowCardFragment : Fragment() {
         _binding = FragmentShowCardBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
 
-        binding.cName.text = args.cardInfo.cardName
-        binding.cText.text = args.cardInfo.cardText
-        binding.cRating.text = args.cardInfo.winRate.toString()
+        binding.cName.text = getString(R.string.card_name, args.cardInfo.cardName)
+        binding.cAttack.text = getString(R.string.attack, args.cardInfo.attack.toString())
+        binding.cHealth.text = getString(R.string.health, args.cardInfo.health.toString())
+        binding.cTechLevel.text = getString(R.string.tech_level, args.cardInfo.techLevel.toString())
+        binding.cCardRace.text = getString(R.string.card_race, args.cardInfo.cardRace)
+        binding.cCardText.text = getString(R.string.card_text, args.cardInfo.cardText)
+        binding.cRate.text = getString(R.string.win_rate, args.cardInfo.winRate.toString())
+        binding.cPosition.text = getString(R.string.average_position, args.cardInfo.averagePosition.toString())
+        binding.cHeroName.text = getString(R.string.hero_choose, args.cardInfo.heroName)
+
+        binding.cFlavorText.text = getString(R.string.flavor_text, args.cardInfo.flavorText)
 
         return binding.root
     }
