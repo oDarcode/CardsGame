@@ -24,8 +24,15 @@ class ShowHeroFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.hName.text = args.heroInfo.heroName
-        binding.hPower.text = args.heroInfo.heroPowerName
+        binding.hRate.text = args.heroInfo.winRate.toString()
+        binding.hPosition.text = args.heroInfo.averagePosition.toString()
+        binding.hSelection.text = args.heroInfo.selectionFrequency.toString()
         binding.hRating.text = args.heroInfo.ratingChange.toString()
+        binding.hHealth.text = args.heroInfo.health.toString()
+
+        binding.hPowerName.text = args.heroInfo.heroPowerName
+        binding.hPowerText.text = args.heroInfo.heroPowerText
+        binding.hPowerCost.text = args.heroInfo.heroPowerCost.toString()
 
         return binding.root
     }
