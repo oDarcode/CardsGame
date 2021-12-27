@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import ru.dariamikhailukova.cardsgame.HeroesFragmentDirections
 import ru.dariamikhailukova.cardsgame.R
 import ru.dariamikhailukova.cardsgame.model.Hero
 import ru.dariamikhailukova.cardsgame.util.Constants.Companion.ZERO
@@ -56,7 +57,8 @@ class HeroAdapter: RecyclerView.Adapter<HeroAdapter.HeroViewHolder>() {
         }
 
         holder.eachHero?.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.action_heroesFragment_to_showHeroFragment)
+            val action = HeroesFragmentDirections.actionHeroesFragmentToShowHeroFragment(heroList[position])
+            view.findNavController().navigate(action)
         }
     }
 

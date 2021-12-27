@@ -1,6 +1,7 @@
 package ru.dariamikhailukova.cardsgame.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Card(
     @SerializedName("cardID")
@@ -27,4 +28,4 @@ data class Card(
     val averagePosition: Double?,
     @SerializedName("flavorText")
     val flavorText: String?
-)
+): Serializable

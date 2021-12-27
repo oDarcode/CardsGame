@@ -1,6 +1,7 @@
 package ru.dariamikhailukova.cardsgame.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Hero (
     @SerializedName("cardID")
@@ -25,4 +26,4 @@ data class Hero (
     val heroPowerID: String,
     @SerializedName("ratingChange")
     val ratingChange: Int?
-)
+): Serializable

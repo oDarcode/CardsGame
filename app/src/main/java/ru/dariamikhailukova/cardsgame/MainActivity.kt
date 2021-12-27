@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.settingsFragment || destination.id == R.id.startFragment
-                || destination.id == R.id.showHeroFragment) {
+                || destination.id == R.id.showHeroFragment || destination.id == R.id.showCardFragment) {
                 bottomNavigationView.visibility = View.GONE
             } else {
                 bottomNavigationView.visibility = View.VISIBLE

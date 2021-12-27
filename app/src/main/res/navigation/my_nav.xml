@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_showHeroFragment_to_heroesFragment"
             app:destination="@id/heroesFragment" />
+        <argument
+            android:name="heroInfo"
+            app:argType="ru.dariamikhailukova.cardsgame.model.Hero" />
     </fragment>
     <fragment
         android:id="@+id/showCardFragment"
@@ -70,5 +73,8 @@
         <action
             android:id="@+id/action_showCardFragment_to_creaturesFragment"
             app:destination="@id/creaturesFragment" />
+        <argument
+            android:name="cardInfo"
+            app:argType="ru.dariamikhailukova.cardsgame.model.Card" />
     </fragment>
 </navigation>
