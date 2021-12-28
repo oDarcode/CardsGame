@@ -65,7 +65,7 @@ class SettingsFragment : Fragment() {
         } else if (mAuth.currentUser != null) {
             signOutFacebook()
         } else {
-            Toast.makeText(mainActivity, "You are not log in", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mainActivity, "Вы не авторизованы", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -80,7 +80,7 @@ class SettingsFragment : Fragment() {
         signOut()
     }
     private fun signOut() {
-        Toast.makeText(mainActivity, "We are log out", Toast.LENGTH_SHORT).show()
+        Toast.makeText(mainActivity, "Вы вышли из аккаунта", Toast.LENGTH_SHORT).show()
         Navigation.findNavController(binding.root).navigate(R.id.action_settingsFragment_to_startFragment)
     }
 
