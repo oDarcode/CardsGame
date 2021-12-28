@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_startFragment_to_heroesFragment"
             app:destination="@id/heroesFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_battleTagFragment"
+            app:destination="@id/battleTagFragment" />
     </fragment>
     <fragment
         android:id="@+id/showHeroFragment"
@@ -76,5 +79,17 @@
         <argument
             android:name="cardInfo"
             app:argType="ru.dariamikhailukova.cardsgame.model.Card" />
+    </fragment>
+    <fragment
+        android:id="@+id/battleTagFragment"
+        android:name="ru.dariamikhailukova.cardsgame.BattleTagFragment"
+        android:label="fragment_battle_tag"
+        tools:layout="@layout/fragment_battle_tag" >
+        <action
+            android:id="@+id/action_battleTagFragment_to_heroesFragment"
+            app:destination="@id/heroesFragment" />
+        <action
+            android:id="@+id/action_battleTagFragment_to_startFragment"
+            app:destination="@id/startFragment" />
     </fragment>
 </navigation>

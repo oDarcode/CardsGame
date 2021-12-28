@@ -60,13 +60,14 @@ class HeroesFragment : Fragment() {
     private fun sendRequest() {
         val googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity)
         val facebookUser = FirebaseAuth.getInstance().currentUser
-        if (googleUser != null) {
+        mainActivity.viewModel.getHeroes()
+        /*if (googleUser != null) {
             mainActivity.viewModel.getHeroes(googleUser.id.toString())
         } else if (facebookUser != null) {
             mainActivity.viewModel.getHeroes(facebookUser.uid)
         } else {
             mainActivity.viewModel.getHeroes()
-        }
+        }*/
     }
 
 }

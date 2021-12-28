@@ -60,13 +60,14 @@ class CreaturesFragment : Fragment() {
     private fun sendRequest() {
         val googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity)
         val facebookUser = FirebaseAuth.getInstance().currentUser
-        if (googleUser != null) {
+        mainActivity.viewModel.getCards()
+       /* if (googleUser != null) {
             mainActivity.viewModel.getCards(googleUser.id.toString())
         } else if (facebookUser != null) {
             mainActivity.viewModel.getCards(facebookUser.uid)
         } else {
             mainActivity.viewModel.getCards()
-        }
+        }*/
     }
 
 }

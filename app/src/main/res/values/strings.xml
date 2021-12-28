@@ -27,5 +27,6 @@
     <string name="hero_choose">Герой, на котором чаще всего берут эту карту:\n%s</string>
 
     <string name="flavor_text">О карте:\n%s</string>
+    <string name="link">%s%s</string>
 
 </resources>
