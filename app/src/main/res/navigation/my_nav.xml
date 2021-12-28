@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="ru.dariamikhailukova.cardsgame.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        android:label="Настройки"
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_heroesFragment"
             app:destination="@id/heroesFragment" />
@@ -23,8 +23,8 @@
     <fragment
         android:id="@+id/heroesFragment"
         android:name="ru.dariamikhailukova.cardsgame.HeroesFragment"
-        android:label="fragment_heroes"
-        tools:layout="@layout/fragment_heroes" >
+        android:label="Cards Game"
+        tools:layout="@layout/fragment_heroes">
         <action
             android:id="@+id/action_heroesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -35,8 +35,8 @@
     <fragment
         android:id="@+id/creaturesFragment"
         android:name="ru.dariamikhailukova.cardsgame.CreaturesFragment"
-        android:label="fragment_creatures"
-        tools:layout="@layout/fragment_creatures" >
+        android:label="Cards Game"
+        tools:layout="@layout/fragment_creatures">
         <action
             android:id="@+id/action_creaturesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -47,8 +47,8 @@
     <fragment
         android:id="@+id/startFragment"
         android:name="ru.dariamikhailukova.cardsgame.StartFragment"
-        android:label="fragment_start"
-        tools:layout="@layout/fragment_start" >
+        android:label="Cards Game"
+        tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startFragment_to_heroesFragment"
             app:destination="@id/heroesFragment" />
@@ -59,8 +59,8 @@
     <fragment
         android:id="@+id/showHeroFragment"
         android:name="ru.dariamikhailukova.cardsgame.ShowHeroFragment"
-        android:label="fragment_show_hero"
-        tools:layout="@layout/fragment_show_hero" >
+        android:label="Герой"
+        tools:layout="@layout/fragment_show_hero">
         <action
             android:id="@+id/action_showHeroFragment_to_heroesFragment"
             app:destination="@id/heroesFragment" />
@@ -71,8 +71,8 @@
     <fragment
         android:id="@+id/showCardFragment"
         android:name="ru.dariamikhailukova.cardsgame.ShowCardFragment"
-        android:label="fragment_show_card"
-        tools:layout="@layout/fragment_show_card" >
+        android:label="Существо"
+        tools:layout="@layout/fragment_show_card">
         <action
             android:id="@+id/action_showCardFragment_to_creaturesFragment"
             app:destination="@id/creaturesFragment" />

@@ -4,9 +4,11 @@
 
     <item
         android:id="@+id/heroesFragment"
-        android:title="heroes" />
+        android:icon="@drawable/ic_hero"
+        android:title="Герои" />
 
     <item
         android:id="@+id/creaturesFragment"
-        android:title="creatures" />
+        android:icon="@drawable/ic_card"
+        android:title="Существа" />
 </menu>

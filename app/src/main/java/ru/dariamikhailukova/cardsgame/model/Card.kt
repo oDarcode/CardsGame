@@ -9,7 +9,7 @@ data class Card(
     @SerializedName("cardName")
     val cardName: String,
     @SerializedName("heroID")
-    val heroID: String?,
+    val heroID: String,
     @SerializedName("heroName")
     val heroName: String?,
     @SerializedName("cardRace")

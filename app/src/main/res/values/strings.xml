@@ -15,7 +15,7 @@
     <string name="health">Здоровье:\n%s</string>
 
     <string name="hero_power_name">Способность: %s</string>
-    <string name="hero_power_text">Описание способности:\n%s</string>
+    <string name="hero_power_text">Описание способности:</string>
     <string name="hero_power_cost">Стоимость: %s</string>
 
     <string name="card_name">Название: %s</string>
@@ -23,10 +23,11 @@
 
     <string name="tech_level">Уровень таверны: %s</string>
     <string name="card_race">Тип существа: %s</string>
-    <string name="card_text">Описание:\n%s</string>
+    <string name="card_text">Описание:</string>
     <string name="hero_choose">Герой, на котором чаще всего берут эту карту:\n%s</string>
 
-    <string name="flavor_text">О карте:\n%s</string>
+    <string name="flavor_text">О карте:</string>
     <string name="link">%s%s</string>
+    <string name="passive">пассивная</string>
 
 </resources>
