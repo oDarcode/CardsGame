@@ -35,7 +35,7 @@ class SettingsFragment : Fragment() {
         mAuth = FirebaseAuth.getInstance()
 
         val acct = GoogleSignIn.getLastSignedInAccount(mainActivity)
-        val currentUser = mAuth.currentUser
+        val currentUser = FirebaseAuth.getInstance().currentUser
         if (acct != null) {
             val personName = acct.displayName
             val personEmail = acct.email
@@ -51,7 +51,6 @@ class SettingsFragment : Fragment() {
             binding.name.text = personName.toString()
             binding.email.text = personEmail.toString()
         }
-
 
         binding.exit.setOnClickListener {
             exitApplication()

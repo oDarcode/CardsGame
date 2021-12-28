@@ -83,13 +83,10 @@
     <fragment
         android:id="@+id/battleTagFragment"
         android:name="ru.dariamikhailukova.cardsgame.BattleTagFragment"
-        android:label="fragment_battle_tag"
-        tools:layout="@layout/fragment_battle_tag" >
+        android:label="Авторизация"
+        tools:layout="@layout/fragment_battle_tag">
         <action
             android:id="@+id/action_battleTagFragment_to_heroesFragment"
             app:destination="@id/heroesFragment" />
-        <action
-            android:id="@+id/action_battleTagFragment_to_startFragment"
-            app:destination="@id/startFragment" />
     </fragment>
 </navigation>

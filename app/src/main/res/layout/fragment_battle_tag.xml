@@ -6,33 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".BattleTagFragment">
 
-    <TextView
-        android:id="@+id/text_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="Введите баттл тэг:"
-        android:textAlignment="center"
+    <Button
+        android:id="@+id/enter_button"
+        android:layout_width="@dimen/big_view_width"
+        android:layout_height="@dimen/big_view_height"
+        android:layout_marginBottom="24dp"
+        android:text="Войти"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/exit_button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="437dp" />
+        android:id="@+id/exit_button2"
+        android:layout_width="@dimen/big_view_width"
+        android:layout_height="@dimen/big_view_height"
+        android:layout_marginBottom="50dp"
+        android:text="Выйти"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/input_battle_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/battle_tag_enter"
+        android:layout_width="@dimen/big_view_width"
+        android:layout_height="@dimen/big_view_height"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="267dp" />
+        android:tooltipText="Введите battle tag"
+        app:layout_constraintBottom_toTopOf="@+id/enter_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Введите Battle Tag:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/battle_tag_enter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

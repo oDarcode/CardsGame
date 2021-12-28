@@ -6,44 +6,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import ru.dariamikhailukova.cardsgame.databinding.FragmentStartBinding
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginResult
-import com.google.android.gms.tasks.Task
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseUser
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FacebookAuthProvider
-import com.facebook.AccessToken
-import com.facebook.CallbackManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import ru.dariamikhailukova.cardsgame.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {
     private var _binding: FragmentStartBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var mainActivity: MainActivity
     var mCallbackManager: CallbackManager = CallbackManager.Factory.create()
     lateinit var mAuth: FirebaseAuth
-    private lateinit var mainActivity: MainActivity
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStartBinding.inflate(inflater, container, false)
-        val view = binding.root
         mainActivity = activity as MainActivity
+
         mAuth = FirebaseAuth.getInstance()
 
         binding.openButton.setOnClickListener {
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_startFragment_to_heroesFragment)
         }
+
         binding.authorizationButton.setOnClickListener { signIn() }
 
         binding.loginButton.setReadPermissions("email", "public_profile")
@@ -61,20 +60,7 @@ class StartFragment : Fragment() {
                 }
             })
 
-        return view
-    }
-
-    override fun onStart() {
-        super.onStart()
-        updateUI(
-            googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity),
-            facebookUser = mAuth.currentUser
-        )
-    }
-
-    private fun signIn() {
-        val signInIntent: Intent = mainActivity.mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        return binding.root
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -95,6 +81,30 @@ class StartFragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        updateUI(
+            googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity),
+            facebookUser = mAuth.currentUser
+        )
+    }
+
+    private fun updateUI(googleUser: GoogleSignInAccount? = null, facebookUser: FirebaseUser? = null) {
+        if (googleUser != null || facebookUser != null) {
+            Navigation.findNavController(binding.root)
+                .navigate(R.id.action_startFragment_to_battleTagFragment)
+        }
+    }
+
+    private fun presentError() {
+        Toast.makeText(mainActivity, "Authentication failed.", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun signIn() {
+        val signInIntent: Intent = mainActivity.mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
     private fun handleFacebookAccessToken(token: AccessToken) {
         val credential = FacebookAuthProvider.getCredential(token.token)
         mAuth.signInWithCredential(credential)
@@ -108,18 +118,8 @@ class StartFragment : Fragment() {
             }
     }
 
-    private fun updateUI(googleUser: GoogleSignInAccount? = null, facebookUser: FirebaseUser? = null) {
-        if (googleUser != null || facebookUser != null) {
-            Navigation.findNavController(binding.root)
-                .navigate(R.id.action_startFragment_to_heroesFragment)
-        }
-    }
-
-    private fun presentError() {
-        Toast.makeText(mainActivity, "Authentication failed.", Toast.LENGTH_SHORT).show()
-    }
-
     companion object {
         private const val RC_SIGN_IN = 0
     }
+
 }

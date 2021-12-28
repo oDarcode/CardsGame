@@ -29,5 +29,6 @@
     <string name="flavor_text">О карте:</string>
     <string name="link">%s%s</string>
     <string name="passive">пассивная</string>
+    <string name="silly_back">/%s/%s</string>
 
 </resources>

@@ -1,14 +1,17 @@
 package ru.dariamikhailukova.cardsgame
 
+
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import ru.dariamikhailukova.cardsgame.api.RetrofitInstance
 import ru.dariamikhailukova.cardsgame.model.Card
 import ru.dariamikhailukova.cardsgame.model.LittleHero
 import ru.dariamikhailukova.cardsgame.model.Hero
+import ru.dariamikhailukova.cardsgame.model.UserInfo
 import ru.dariamikhailukova.cardsgame.repository.HeroesRepository
 
 class MainViewModel(private val repository: HeroesRepository): ViewModel() {
@@ -16,6 +19,10 @@ class MainViewModel(private val repository: HeroesRepository): ViewModel() {
     val heroResponse: MutableLiveData<Response<LittleHero>> = MutableLiveData()
     val heroesResponse: MutableLiveData<Response<List<Hero>>> = MutableLiveData()
     val cardsResponse: MutableLiveData<Response<List<Card>>> = MutableLiveData()
+
+    val userResponse: MutableLiveData<Response<String>> = MutableLiveData()
+
+    var battleTag: String? = null
 
     fun getHero() {
         viewModelScope.launch {
@@ -69,6 +76,19 @@ class MainViewModel(private val repository: HeroesRepository): ViewModel() {
                 runCatching {
                     val response = repository.getCards(battleTag)
                     cardsResponse.value = response
+                }.onFailure {
+                    Log.d("ERROR", it.message.toString())
+                }
+            }
+        }
+    }
+
+    fun postUser(userInfo: UserInfo) {
+        viewModelScope.launch {
+            with(repository) {
+                runCatching {
+                    val response = repository.postUser(userInfo)
+                    userResponse.value = response
                 }.onFailure {
                     Log.d("ERROR", it.message.toString())
                 }

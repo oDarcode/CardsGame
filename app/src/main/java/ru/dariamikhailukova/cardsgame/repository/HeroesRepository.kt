@@ -1,10 +1,12 @@
 package ru.dariamikhailukova.cardsgame.repository
 
 import retrofit2.Response
+import retrofit2.http.Body
 import ru.dariamikhailukova.cardsgame.api.RetrofitInstance
 import ru.dariamikhailukova.cardsgame.model.Card
 import ru.dariamikhailukova.cardsgame.model.LittleHero
 import ru.dariamikhailukova.cardsgame.model.Hero
+import ru.dariamikhailukova.cardsgame.model.UserInfo
 
 class HeroesRepository {
 
@@ -32,4 +34,9 @@ class HeroesRepository {
         RetrofitInstance
             .api
             .getCards(battleTag)
+
+    suspend fun postUser(userInfo: UserInfo): Response<String> =
+        RetrofitInstance
+            .api
+            .postUser(userInfo)
 }

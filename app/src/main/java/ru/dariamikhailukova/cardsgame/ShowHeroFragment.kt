@@ -2,6 +2,7 @@ package ru.dariamikhailukova.cardsgame
 
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.text.Html
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import ru.dariamikhailukova.cardsgame.databinding.FragmentShowHeroBinding
 import ru.dariamikhailukova.cardsgame.util.Constants
+import ru.dariamikhailukova.cardsgame.util.Constants.Companion.BASE_URL_PICTURES
 import ru.dariamikhailukova.cardsgame.util.Constants.Companion.ZERO
 
 class ShowHeroFragment : Fragment() {
@@ -35,12 +37,12 @@ class ShowHeroFragment : Fragment() {
 
     private fun setImages() {
         Glide.with(this)
-            .load(getString(R.string.link, Constants.BASE_URL, args.heroInfo.cardId))
+            .load(getString(R.string.link, BASE_URL_PICTURES, args.heroInfo.cardId))
             .override(892, 766)
             .into(binding.hHeroImage)
 
         Glide.with(this)
-            .load(getString(R.string.link, Constants.BASE_URL, args.heroInfo.heroPowerID))
+            .load(getString(R.string.link, BASE_URL_PICTURES, args.heroInfo.heroPowerID))
             .override(882, 1314)
             .into(binding.hPowerImage)
     }

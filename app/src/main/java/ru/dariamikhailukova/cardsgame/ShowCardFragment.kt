@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import ru.dariamikhailukova.cardsgame.databinding.FragmentShowCardBinding
 import ru.dariamikhailukova.cardsgame.util.Constants.Companion.BASE_URL
+import ru.dariamikhailukova.cardsgame.util.Constants.Companion.BASE_URL_PICTURES
 import ru.dariamikhailukova.cardsgame.util.Constants.Companion.MINUS
 import ru.dariamikhailukova.cardsgame.util.Constants.Companion.ZERO
 import ru.dariamikhailukova.cardsgame.util.changeEmptyToString
@@ -37,12 +38,12 @@ class ShowCardFragment : Fragment() {
 
     private fun setImages() {
         Glide.with(this)
-            .load(getString(R.string.link, BASE_URL, args.cardInfo.cardId))
+            .load(getString(R.string.link, BASE_URL_PICTURES, args.cardInfo.cardId))
             .override(884, 1318)
             .into(binding.cImage)
 
         Glide.with(this)
-            .load(getString(R.string.link, BASE_URL, args.cardInfo.heroID))
+            .load(getString(R.string.link, BASE_URL_PICTURES, args.cardInfo.heroID))
             .override(892, 766)
             .into(binding.cImageSmt)
     }
