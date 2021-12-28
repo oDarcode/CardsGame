@@ -61,21 +61,6 @@ class StartFragment : Fragment() {
                 }
             })
 
-        /*viewModel.getHero()
-        viewModel.heroResponse.observe(this, Observer { response ->
-            if (response.isSuccessful) {
-                Log.d("name ", response.body()?.name.toString())
-                Log.d("health ", response.body()?.health.toString())
-                Log.d("powerName ", response.body()?.powerName.toString())
-                Log.d("powerText ", response.body()?.powerText.toString())
-                Log.d("powerCost ", response.body()?.powerCost.toString())
-                Log.d("powerId ", response.body()?.powerId.toString())
-            } else {
-                Log.d("error ", response.errorBody().toString())
-            }
-
-        })*/
-
         return view
     }
 

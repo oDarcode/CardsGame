@@ -42,14 +42,14 @@ class SettingsFragment : Fragment() {
             val personId = acct.id
 
             binding.name.text = personName.toString()
-            binding.email.text = personId.toString()
+            binding.email.text = personEmail.toString()
         } else if (currentUser != null) {
             val personName = currentUser.displayName
             val personEmail = currentUser.email
             val personId = currentUser.uid
 
             binding.name.text = personName.toString()
-            binding.email.text = personId.toString()
+            binding.email.text = personEmail.toString()
         }
 
 
