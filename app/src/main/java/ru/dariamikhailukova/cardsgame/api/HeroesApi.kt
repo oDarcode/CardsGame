@@ -16,4 +16,10 @@ interface HeroesApi {
 
     @GET("cards")
     suspend fun getCards(): Response<List<Card>>
+
+    @GET("heroes")
+    suspend fun getHeroes(battleTag: String): Response<List<Hero>>
+
+    @GET("cards")
+    suspend fun getCards(battleTag: String): Response<List<Card>>
 }

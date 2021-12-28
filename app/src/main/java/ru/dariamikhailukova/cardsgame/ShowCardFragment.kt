@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import ru.dariamikhailukova.cardsgame.databinding.FragmentShowCardBinding
 import ru.dariamikhailukova.cardsgame.databinding.FragmentShowHeroBinding
 
@@ -21,6 +22,8 @@ class ShowCardFragment : Fragment() {
     ): View {
         _binding = FragmentShowCardBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
+
+        //Glide.with(this).load("http://goo.gl/gEgYUd").into(binding.cImage);
 
         binding.cName.text = getString(R.string.card_name, args.cardInfo.cardName)
         binding.cAttack.text = getString(R.string.attack, args.cardInfo.attack.toString())

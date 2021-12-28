@@ -22,4 +22,14 @@ class HeroesRepository {
         RetrofitInstance
             .api
             .getCards()
+
+    suspend fun getHeroes(battleTag: String): Response<List<Hero>> =
+        RetrofitInstance
+            .api
+            .getHeroes(battleTag)
+
+    suspend fun getCards(battleTag: String): Response<List<Card>> =
+        RetrofitInstance
+            .api
+            .getCards(battleTag)
 }

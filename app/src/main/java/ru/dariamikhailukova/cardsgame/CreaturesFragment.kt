@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.auth.FirebaseAuth
 import ru.dariamikhailukova.cardsgame.adapter.CardsAdapter
 import ru.dariamikhailukova.cardsgame.databinding.FragmentCreaturesBinding
 
@@ -25,8 +27,8 @@ class CreaturesFragment : Fragment() {
 
         mainActivity = activity as MainActivity
         setupRecyclerView()
+        sendRequest()
 
-        mainActivity.viewModel.getCards()
         mainActivity.viewModel.cardsResponse.observe(mainActivity, androidx.lifecycle.Observer { response ->
             if (response.isSuccessful) {
                 response.body()?.let { cardsAdapter.setData(it) }
@@ -53,6 +55,18 @@ class CreaturesFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.recyclerViewCreatures.adapter = cardsAdapter
         binding.recyclerViewCreatures.layoutManager = LinearLayoutManager(mainActivity)
+    }
+
+    private fun sendRequest() {
+        val googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity)
+        val facebookUser = FirebaseAuth.getInstance().currentUser
+        if (googleUser != null) {
+            mainActivity.viewModel.getCards(googleUser.id.toString())
+        } else if (facebookUser != null) {
+            mainActivity.viewModel.getCards(facebookUser.uid)
+        } else {
+            mainActivity.viewModel.getCards()
+        }
     }
 
 }

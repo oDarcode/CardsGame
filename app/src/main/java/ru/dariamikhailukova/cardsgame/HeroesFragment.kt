@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.firebase.auth.FirebaseAuth
 import ru.dariamikhailukova.cardsgame.adapter.HeroAdapter
 import ru.dariamikhailukova.cardsgame.databinding.FragmentHeroesBinding
 
@@ -26,8 +28,8 @@ class HeroesFragment : Fragment() {
 
         mainActivity = activity as MainActivity
         setupRecyclerView()
+        sendRequest()
 
-        mainActivity.viewModel.getHeroes()
         mainActivity.viewModel.heroesResponse.observe(mainActivity, androidx.lifecycle.Observer { response ->
             if (response.isSuccessful) {
                 response.body()?.let { myAdapter.setData(it) }
@@ -54,6 +56,17 @@ class HeroesFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.recyclerViewHeroes.adapter = myAdapter
         binding.recyclerViewHeroes.layoutManager = LinearLayoutManager(mainActivity)
+    }
+    private fun sendRequest() {
+        val googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity)
+        val facebookUser = FirebaseAuth.getInstance().currentUser
+        if (googleUser != null) {
+            mainActivity.viewModel.getHeroes(googleUser.id.toString())
+        } else if (facebookUser != null) {
+            mainActivity.viewModel.getHeroes(facebookUser.uid)
+        } else {
+            mainActivity.viewModel.getHeroes()
+        }
     }
 
 }

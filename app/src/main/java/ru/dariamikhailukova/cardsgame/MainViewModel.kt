@@ -1,5 +1,6 @@
 package ru.dariamikhailukova.cardsgame
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -25,15 +26,53 @@ class MainViewModel(private val repository: HeroesRepository): ViewModel() {
 
     fun getHeroes() {
         viewModelScope.launch {
-            val response = repository.getHeroes()
-            heroesResponse.value = response
+            with(repository) {
+                runCatching {
+                    val response = repository.getHeroes()
+                    heroesResponse.value = response
+                }.onFailure {
+                    Log.d("ERROR", it.message.toString())
+                }
+            }
         }
     }
 
     fun getCards() {
         viewModelScope.launch {
-            val response = repository.getCards()
-            cardsResponse.value = response
+            with(repository) {
+                runCatching {
+                    val response = repository.getCards()
+                    cardsResponse.value = response
+                }.onFailure {
+                    Log.d("ERROR", it.message.toString())
+                }
+            }
+        }
+    }
+
+    fun getHeroes(battleTag: String) {
+        viewModelScope.launch {
+            with(repository) {
+                runCatching {
+                    val response = getHeroes(battleTag)
+                    heroesResponse.value = response
+                }.onFailure {
+                    Log.d("ERROR", it.message.toString())
+                }
+            }
+        }
+    }
+
+    fun getCards(battleTag: String) {
+        viewModelScope.launch {
+            with(repository) {
+                runCatching {
+                    val response = repository.getCards(battleTag)
+                    cardsResponse.value = response
+                }.onFailure {
+                    Log.d("ERROR", it.message.toString())
+                }
+            }
         }
     }
 }
