@@ -3,10 +3,7 @@ package ru.dariamikhailukova.cardsgame.repository
 import retrofit2.Response
 import retrofit2.http.Body
 import ru.dariamikhailukova.cardsgame.api.RetrofitInstance
-import ru.dariamikhailukova.cardsgame.model.Card
-import ru.dariamikhailukova.cardsgame.model.LittleHero
-import ru.dariamikhailukova.cardsgame.model.Hero
-import ru.dariamikhailukova.cardsgame.model.UserInfo
+import ru.dariamikhailukova.cardsgame.model.*
 
 class HeroesRepository {
 
@@ -25,12 +22,12 @@ class HeroesRepository {
             .api
             .getCards()
 
-    suspend fun getHeroes(battleTag: String): Response<List<Hero>> =
+    suspend fun getHeroes(battleTag: BattleTagInfo): Response<List<Hero>> =
         RetrofitInstance
             .api
             .getHeroes(battleTag)
 
-    suspend fun getCards(battleTag: String): Response<List<Card>> =
+    suspend fun getCards(battleTag: BattleTagInfo): Response<List<Card>> =
         RetrofitInstance
             .api
             .getCards(battleTag)

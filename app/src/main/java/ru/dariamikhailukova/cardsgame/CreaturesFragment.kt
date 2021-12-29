@@ -10,6 +10,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FirebaseAuth
 import ru.dariamikhailukova.cardsgame.adapter.CardsAdapter
 import ru.dariamikhailukova.cardsgame.databinding.FragmentCreaturesBinding
+import ru.dariamikhailukova.cardsgame.model.BattleTagInfo
 
 class CreaturesFragment : Fragment() {
     private var _binding: FragmentCreaturesBinding? = null
@@ -58,16 +59,13 @@ class CreaturesFragment : Fragment() {
     }
 
     private fun sendRequest() {
-        val googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity)
-        val facebookUser = FirebaseAuth.getInstance().currentUser
-        mainActivity.viewModel.getCards()
-       /* if (googleUser != null) {
-            mainActivity.viewModel.getCards(googleUser.id.toString())
-        } else if (facebookUser != null) {
-            mainActivity.viewModel.getCards(facebookUser.uid)
+        val battleTag = mainActivity.viewModel.battleTag
+
+        if (battleTag != null) {
+            mainActivity.viewModel.getCards(BattleTagInfo(battleTag))
         } else {
             mainActivity.viewModel.getCards()
-        }*/
+        }
     }
 
 }

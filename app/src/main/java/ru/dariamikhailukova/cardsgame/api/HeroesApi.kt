@@ -4,10 +4,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import ru.dariamikhailukova.cardsgame.model.Card
-import ru.dariamikhailukova.cardsgame.model.LittleHero
-import ru.dariamikhailukova.cardsgame.model.Hero
-import ru.dariamikhailukova.cardsgame.model.UserInfo
+import ru.dariamikhailukova.cardsgame.model.*
 
 interface HeroesApi {
 
@@ -20,11 +17,15 @@ interface HeroesApi {
     @GET("cards")
     suspend fun getCards(): Response<List<Card>>
 
-    @GET("heroes")
-    suspend fun getHeroes(battleTag: String): Response<List<Hero>>
+    @GET("heroes/player")
+    suspend fun getHeroes(
+        @Body battleTag: BattleTagInfo
+    ): Response<List<Hero>>
 
-    @GET("cards")
-    suspend fun getCards(battleTag: String): Response<List<Card>>
+    @GET("cards/player")
+    suspend fun getCards(
+        @Body battleTag: BattleTagInfo
+    ): Response<List<Card>>
 
     @POST("users")
     suspend fun postUser(

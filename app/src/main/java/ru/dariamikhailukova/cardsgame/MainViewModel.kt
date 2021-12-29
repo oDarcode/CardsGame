@@ -8,10 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import ru.dariamikhailukova.cardsgame.api.RetrofitInstance
-import ru.dariamikhailukova.cardsgame.model.Card
-import ru.dariamikhailukova.cardsgame.model.LittleHero
-import ru.dariamikhailukova.cardsgame.model.Hero
-import ru.dariamikhailukova.cardsgame.model.UserInfo
+import ru.dariamikhailukova.cardsgame.model.*
 import ru.dariamikhailukova.cardsgame.repository.HeroesRepository
 
 class MainViewModel(private val repository: HeroesRepository): ViewModel() {
@@ -38,7 +35,7 @@ class MainViewModel(private val repository: HeroesRepository): ViewModel() {
                     val response = repository.getHeroes()
                     heroesResponse.value = response
                 }.onFailure {
-                    Log.d("ERROR", it.message.toString())
+                    Log.d(TAG, it.message.toString())
                 }
             }
         }
@@ -51,33 +48,33 @@ class MainViewModel(private val repository: HeroesRepository): ViewModel() {
                     val response = repository.getCards()
                     cardsResponse.value = response
                 }.onFailure {
-                    Log.d("ERROR", it.message.toString())
+                    Log.d(TAG, it.message.toString())
                 }
             }
         }
     }
 
-    fun getHeroes(battleTag: String) {
+    fun getHeroes(battleTag: BattleTagInfo) {
         viewModelScope.launch {
             with(repository) {
                 runCatching {
                     val response = getHeroes(battleTag)
                     heroesResponse.value = response
                 }.onFailure {
-                    Log.d("ERROR", it.message.toString())
+                    Log.d(TAG, it.message.toString())
                 }
             }
         }
     }
 
-    fun getCards(battleTag: String) {
+    fun getCards(battleTag: BattleTagInfo) {
         viewModelScope.launch {
             with(repository) {
                 runCatching {
                     val response = repository.getCards(battleTag)
                     cardsResponse.value = response
                 }.onFailure {
-                    Log.d("ERROR", it.message.toString())
+                    Log.d(TAG, it.message.toString())
                 }
             }
         }
@@ -90,9 +87,13 @@ class MainViewModel(private val repository: HeroesRepository): ViewModel() {
                     val response = repository.postUser(userInfo)
                     userResponse.value = response
                 }.onFailure {
-                    Log.d("ERROR", it.message.toString())
+                    Log.d(TAG, it.message.toString())
                 }
             }
         }
+    }
+
+    companion object {
+        private const val TAG = "MainViewModel"
     }
 }

@@ -39,18 +39,17 @@ class SettingsFragment : Fragment() {
         if (acct != null) {
             val personName = acct.displayName
             val personEmail = acct.email
-            val personId = acct.id
 
             binding.name.text = personName.toString()
             binding.email.text = personEmail.toString()
         } else if (currentUser != null) {
             val personName = currentUser.displayName
             val personEmail = currentUser.email
-            val personId = currentUser.uid
 
             binding.name.text = personName.toString()
             binding.email.text = personEmail.toString()
         }
+        binding.battleTag.text = mainActivity.viewModel.battleTag
 
         binding.exit.setOnClickListener {
             exitApplication()

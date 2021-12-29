@@ -30,7 +30,7 @@ class BattleTagFragment : Fragment() {
         _binding = FragmentBattleTagBinding.inflate(inflater, container, false)
         mainActivity = activity as MainActivity
         mAuth = FirebaseAuth.getInstance()
-        getAutorisationName()
+        getAuthorizationName()
 
         binding.enterButton.setOnClickListener {
             if (binding.battleTagEnter.text.contains("#", ignoreCase = true)
@@ -90,7 +90,7 @@ class BattleTagFragment : Fragment() {
         }
     }
 
-    private fun getAutorisationName() {
+    private fun getAuthorizationName() {
         val acct = GoogleSignIn.getLastSignedInAccount(mainActivity)
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (acct != null) {
