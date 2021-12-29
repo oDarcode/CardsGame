@@ -72,6 +72,14 @@ class StartFragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        updateUI(
+            googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity),
+            facebookUser = mAuth.currentUser
+        )
+    }
+
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val googleUser = completedTask.getResult(ApiException::class.java)
@@ -81,15 +89,10 @@ class StartFragment : Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        updateUI(
-            googleUser = GoogleSignIn.getLastSignedInAccount(mainActivity),
-            facebookUser = mAuth.currentUser
-        )
-    }
-
-    private fun updateUI(googleUser: GoogleSignInAccount? = null, facebookUser: FirebaseUser? = null) {
+    private fun updateUI(
+        googleUser: GoogleSignInAccount? = null,
+        facebookUser: FirebaseUser? = null
+    ) {
         if (googleUser != null || facebookUser != null) {
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_startFragment_to_battleTagFragment)

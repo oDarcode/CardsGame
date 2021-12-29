@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FirebaseAuth
+import retrofit2.Response
 import ru.dariamikhailukova.cardsgame.databinding.FragmentBattleTagBinding
 import ru.dariamikhailukova.cardsgame.model.UserInfo
 import ru.dariamikhailukova.cardsgame.util.Constants.Companion.FACEBOOK
@@ -55,14 +56,7 @@ class BattleTagFragment : Fragment() {
             if (response.isSuccessful) {
                 Navigation.findNavController(binding.root).navigate(R.id.action_battleTagFragment_to_heroesFragment)
             } else {
-                //Navigation.findNavController(binding.root).navigate(R.id.action_battleTagFragment_to_heroesFragment)
-                //mainActivity.viewModel.battleTag = "V31R#2592"
-                if (response.code() == 404) {
-                    Toast.makeText(mainActivity, "Пользователь не найден", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(mainActivity, "Неправильные параметры", Toast.LENGTH_SHORT).show()
-                }
-
+                toastForErrors(response)
             }
         })
 
@@ -72,23 +66,11 @@ class BattleTagFragment : Fragment() {
         return binding.root
     }
 
-    private fun correctBattleTag(str: String): Boolean {
-        val parts = str.split("#")
-
-        if (parts.size == 2 && parts[0].isNotEmpty() && parts[1].isNotEmpty()) {
-            mainActivity.viewModel.battleTag = str
-                //getString(R.string.silly_back, parts[0], parts[1])
-            return true
-        }
-        return false
-    }
-
-    private fun exitApplication() {
-        if (GoogleSignIn.getLastSignedInAccount(mainActivity) != null) {
-            (mainActivity).mGoogleSignInClient.signOut()
+    private fun toastForErrors(response: Response<String>) {
+        if (response.code() == 404) {
+            Toast.makeText(mainActivity, "Пользователь не найден", Toast.LENGTH_SHORT).show()
         } else {
-            mAuth.signOut()
-            LoginManager.getInstance().logOut()
+            Toast.makeText(mainActivity, "Неправильные параметры", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -101,6 +83,15 @@ class BattleTagFragment : Fragment() {
         } else if (currentUser != null) {
             personId = currentUser.uid
             system = FACEBOOK
+        }
+    }
+
+    private fun exitApplication() {
+        if (GoogleSignIn.getLastSignedInAccount(mainActivity) != null) {
+            (mainActivity).mGoogleSignInClient.signOut()
+        } else {
+            mAuth.signOut()
+            LoginManager.getInstance().logOut()
         }
     }
 

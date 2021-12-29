@@ -17,6 +17,7 @@ import com.facebook.login.LoginManager
 
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
 class SettingsFragment : Fragment() {
@@ -37,17 +38,9 @@ class SettingsFragment : Fragment() {
         val acct = GoogleSignIn.getLastSignedInAccount(mainActivity)
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (acct != null) {
-            val personName = acct.displayName
-            val personEmail = acct.email
-
-            binding.name.text = personName.toString()
-            binding.email.text = personEmail.toString()
+            displayGoogle(acct)
         } else if (currentUser != null) {
-            val personName = currentUser.displayName
-            val personEmail = currentUser.email
-
-            binding.name.text = personName.toString()
-            binding.email.text = personEmail.toString()
+            displayFacebook(currentUser)
         }
         binding.battleTag.text = mainActivity.viewModel.battleTag
 
@@ -67,6 +60,22 @@ class SettingsFragment : Fragment() {
         } else {
             Toast.makeText(mainActivity, "Вы не авторизованы", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun displayGoogle(acct: GoogleSignInAccount) {
+        val personName = acct.displayName
+        val personEmail = acct.email
+
+        binding.name.text = personName.toString()
+        binding.email.text = personEmail.toString()
+    }
+
+    private fun displayFacebook(currentUser: FirebaseUser) {
+        val personName = currentUser.displayName
+        val personEmail = currentUser.email
+
+        binding.name.text = personName.toString()
+        binding.email.text = personEmail.toString()
     }
 
     private fun signOutGoogle() {
