@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Hero (
-    @SerializedName("cardID")
-    val cardId: String,
+    @SerializedName("heroID")
+    val heroId: String,
     @SerializedName("heroName")
     val heroName: String,
     @SerializedName("heroPowerName")

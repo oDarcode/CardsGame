@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class UserInfo(
-    @SerializedName("BattleTag")
+    @SerializedName("battleTag")
     val battleTag: String,
     val stringedAuthorizationID: String,
     val authorizationType: String

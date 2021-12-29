@@ -37,7 +37,7 @@ class ShowHeroFragment : Fragment() {
 
     private fun setImages() {
         Glide.with(this)
-            .load(getString(R.string.link, BASE_URL_PICTURES, args.heroInfo.cardId))
+            .load(getString(R.string.link, BASE_URL_PICTURES, args.heroInfo.heroId))
             .override(892, 766)
             .into(binding.hHeroImage)
 

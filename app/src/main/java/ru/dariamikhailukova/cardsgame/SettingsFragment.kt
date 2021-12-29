@@ -60,8 +60,10 @@ class SettingsFragment : Fragment() {
     private fun exitApplication() {
         if (GoogleSignIn.getLastSignedInAccount(mainActivity) != null) {
             signOutGoogle()
+            mainActivity.viewModel.battleTag = null
         } else if (mAuth.currentUser != null) {
             signOutFacebook()
+            mainActivity.viewModel.battleTag = null
         } else {
             Toast.makeText(mainActivity, "Вы не авторизованы", Toast.LENGTH_SHORT).show()
         }

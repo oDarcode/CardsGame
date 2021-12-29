@@ -55,6 +55,8 @@ class BattleTagFragment : Fragment() {
             if (response.isSuccessful) {
                 Navigation.findNavController(binding.root).navigate(R.id.action_battleTagFragment_to_heroesFragment)
             } else {
+                //Navigation.findNavController(binding.root).navigate(R.id.action_battleTagFragment_to_heroesFragment)
+                //mainActivity.viewModel.battleTag = "V31R#2592"
                 if (response.code() == 404) {
                     Toast.makeText(mainActivity, "Пользователь не найден", Toast.LENGTH_SHORT).show()
                 } else {
