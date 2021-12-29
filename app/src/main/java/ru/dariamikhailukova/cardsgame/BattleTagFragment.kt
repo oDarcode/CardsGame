@@ -33,8 +33,9 @@ class BattleTagFragment : Fragment() {
         getAutorisationName()
 
         binding.enterButton.setOnClickListener {
-            if (binding.battleTagEnter.text.contains("#", ignoreCase = true) && correctBattleTag(binding.battleTagEnter.text.toString())) {
-                val text = mainActivity.viewModel.battleTag
+            if (binding.battleTagEnter.text.contains("#", ignoreCase = true)
+            ) {
+                mainActivity.viewModel.battleTag = binding.battleTagEnter.text.toString()
                 mainActivity.viewModel.postUser(
                     UserInfo(
                         battleTag = mainActivity.viewModel.battleTag.orEmpty(),
@@ -54,7 +55,12 @@ class BattleTagFragment : Fragment() {
             if (response.isSuccessful) {
                 Navigation.findNavController(binding.root).navigate(R.id.action_battleTagFragment_to_heroesFragment)
             } else {
-                Toast.makeText(mainActivity, "Неправильный battle tag", Toast.LENGTH_SHORT).show()
+                if (response.code() == 404) {
+                    Toast.makeText(mainActivity, "Пользователь не найден", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(mainActivity, "Неправильные параметры", Toast.LENGTH_SHORT).show()
+                }
+
             }
         })
 
@@ -68,7 +74,8 @@ class BattleTagFragment : Fragment() {
         val parts = str.split("#")
 
         if (parts.size == 2 && parts[0].isNotEmpty() && parts[1].isNotEmpty()) {
-            mainActivity.viewModel.battleTag = getString(R.string.silly_back, parts[0], parts[1])
+            mainActivity.viewModel.battleTag = str
+                //getString(R.string.silly_back, parts[0], parts[1])
             return true
         }
         return false
